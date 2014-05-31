@@ -1,0 +1,266 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<DataAccessLibrary.Model.Testmaster>
+@{
+    ViewBag.Title = "ModifyTat";
+    Layout = "~/Views/Shared/_LilacLayoutwithTab.cshtml";
+    int count;
+    count = (int)ViewData["total"];
+}
+
+@section styles{
+    @Styles.Render("~/Content/tables1.css")
+}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <div id="wrapper">
+            <div id="content">
+                <div id="rightnow">
+                    <h3 class="reallynow">
+                        <span>Welcome Admin</span> <div align="right" style="font-size:smaller">Date : May 19, 2014  , Time :<div id="timeval" style="display:inline-block;"></div> </div>
+                    </h3>
+                    <p class="youhave" style="vertical-align:middle">
+                        <marquee direction="left" scrolldelay="3" scrollamount="2" id="alert_marquee" style="vertical-align:middle">
+                            Lilac Insights... because every Pregnancy is Precious.  ::  All prenatal screening done under guidelines from Fetal Medicine Foundation (FMF) UK   ::   Only center in Western India using fully automatic Delfia Xpress as per FMF guidelines   ::
+                        </marquee>
+                    </p>
+                </div>
+                <div id="infowrap">
+                    <div id="infobox">
+                        <h3>Modify TAT : </h3>
+
+
+
+                        <form id="form" name="form" action="/Admin/ModifyTat" method="post">
+                            <fieldset>
+                                <legend>TAT</legend>
+                                <div align="right">
+                                    <input type="button" value="Export to CSV" onclick='export_to_csv()' class="stylish_button" title="Export filtered output to CSV" />
+                                </div>
+                                <table width="100%" border="0" style="border-collapse:collapse" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <th width="105" style="border:none"><h3 style="background:none;border-bottom:none">Search Doctor : </h3></th>
+                                        <th width="80" align="left" style="border:none; margin-top:5px;">
+                                            <div class="ui-widget">
+                                                <input id="searchString" name="searchString" class="stylish_textarea" style="width:90px;height:auto"
+                                                       onkeydown="if (event.keyCode == 13) document.getElementById('search').click()" />
+                                            </div>
+                                        </th>
+                                        <th width="70" style="border:none;padding:0px;"><h3 style="background:none;border-bottom:none">By Date : </h3></th>
+                                        <th width="5" align="left" style="border:none; "><h4>From</h4></th>
+                                        <th width="70" align="left" style="border:none;">
+                                            <input type="text" id="fromdate" name="from" class="stylish_textarea" style="width:80px;height:auto" onblur="doCompareDate()" placeholder="yyyy-mm-dd" />
+                                        </th>
+                                        <th width="10" align="left" style="border:none; padding:0px;  "><h4>To</h4></th>
+                                        <th width="70" align="left" style="border:none">
+                                            <input type="text" id="todate" name="to" class="stylish_textarea" style="width:80px;height:auto" onblur="onCompareEndDate()" placeholder="yyyy-mm-dd"
+                                                   value="05/19/2014" />
+                                        </th>
+                                        <input type="hidden" id="set_date" name="set_date" value="02/01/2013" />
+                                        <th width="112" align="left" style="border:none;padding:0px;vertical-align:middle;padding-right:10px">
+
+                                            @*@Html.DropDownList("Report_type", (IEnumerable<SelectListItem>)ViewBag.Report_type,"By Report Type" ,new { @class = "wrapper-dropdown-4" })*@
+                                             <div id="rpt_type" class="wrapper-dropdown-4">
+                                                                    By Report Type
+                                                                    <ul class="dropdown">
+                                                                        <li><input type="checkbox" name="el" id="el-1" value="FT"><label for="el-1">FT</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-2" value="SQ"><label for="el-2">SQ</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-3" value="PB"><label for="el-3">PB</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-4" value="SAU"><label for="el-4">SAU</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-5" value="STAF"><label for="el-5">STAF</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-6" value="STO"><label for="el-6">STO</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-7" value="STQ"><label for="el-7">STQ</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-8" value="ST"><label for="el-8">ST</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-9" value="AF"><label for="el-9">AF</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-10" value="CV"><label for="el-10">CV</label></li>
+                                                                        <li><input type="checkbox" name="el" id="el-11" value="NBS"><label for="el-11">NBS</label></li>
+                                                                    </ul>
+                                                                </div>
+                                           
+                                        </th>
+                                        <th width="40" style="border:none" align="left" valign="middle">
+                                            <input type="submit" name="search" id="search" class="stylish_button" style="width:40px" value="GO" title="Search" onclick="search_reports()" />
+                                            <!-- <input type="button" name="refresh" id="refresh" class="refresh" value="Refresh" onclick="refresh();"/> -->
+                                        </th>
+                                        <th width="20" align="right" valign="middle" style="border:none">
+                                        </th>
+                                        <th width="20" align="left" valign="middle" style="border:none">
+                                            <div id="next" title="Next Page" onclick="jump_to_page(2)"></div>
+                                        </th>
+                                    </tr>
+                                </table><table class="inbox" ">
+                        <thead>
+                          <tr>
+                            <th scope=" col" style="width:8%">
+                                    <b>Sr. No.</b></th>
+                                    <th scope="col" style="width:12%"><b>Patient Name</b></th>
+                                    <th scope="col" style="width:12%"><b>Doctor Name</b></th>
+                                    <th scope="col" style="width:12%"><b>Report Name</b></th>
+                                    <th scope="col" style="width:12%"><b>Sample IN Time</b></th>
+                                    <th scope="col" style="width:12%"><b>Original TAT</b></th>
+                                    <th scope="col" style="width:12%"><b>Modified TAT</b></th>
+                                    <th scope="col" style="width:10%"><b>Reason</b></th>
+                                    <th scope="col" style="width:10%"><b>Action</b></th>
+                                    </tr>
+                                    </thead>
+
+                                     @{
+                                            int i = Model.FirstItemOnPage;
+                                            foreach (var item in Model)
+                                            {
+                                            <tr class='bold_cells'>
+                                                <td>@i</td>
+                                                <td>@item.Patientmaster.name</td>
+                                                <td>@item.Refmaster.name</td>
+                                                <td>@item.rptname</td>
+                                                <td>@item.rptintime</td>
+                                                <td>@item.rptouttime</td>
+                                                <td>No Change</td>
+                                                <td>No reason</td>
+                                                <td align='center'>
+                                                    <input type='button' class='stylish_button' style='width: 100px; height: auto' value='Modify TAT' onclick="update_tat()" /></td>
+                                            </tr>
+                                                
+                                                i++;
+                                            }
+                                        }
+
+
+ 
+
+                                    <tfoot>
+                                        <tr align="right">
+                                            <td colspan="9">
+                                                <div align="left" style="width:40%;float:left">
+                                                    <b>Total Records : @count</b>
+                                                </div>
+                                                <div align="right" style="width:60%;float:right">
+                                                    Page @(Model.PageCount <Model.PageNumber ? 0 :Model.PageNumber) of @Model.PageCount
+                                                    @Html.PagedListPager(Model, page => Url.Action("UtilityReports", new{page}))
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>                                        
+                                        <script>showTime();</script>
+                                    </tbody>
+                                </table>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#fromdate").datepicker({ minyear: -100, maxDate: "+0D" });
+        $("#fromdate").datepicker("option", "dateFormat", "yy-mm-dd");
+    });
+    $(function () {
+        $("#todate").datepicker({ minyear: -100, maxDate: "+0D" });
+        $("#todate").datepicker("option", "dateFormat", "yy-mm-dd");
+    });
+
+    function update_tat() {
+        
+        $("#dialog-form").dialog("open");
+    }
+
+    $("#dialog-form").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        buttons: {
+            "Update TAT": function () {
+                var bValid = true;
+                allFields.removeClass("ui-state-error");
+
+                bValid = bValid && checkTAT(tat, "Number of Days for New TAT");
+                bValid = bValid && checkLength(reason, "Reason");
+
+                if (bValid) {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "update_tat.php",
+                        data: {
+                            testid: testid_to_be_updated,
+                            tat: tat.val(),
+                            reason: reason.val()
+                        },
+                        cache: false,
+                        success: function (data) {
+                            if (data === "Success") {
+                                tips.text("TAT Updated successfully!!!").css("color", "#874F7E");
+                                setTimeout(function () {
+                                    $("#dialog-form").dialog("close");
+                                    setTimeout(function () { document.location.reload(); }, 1000);
+                                }, 1000);
+                            }
+                            else {
+                                console.log("Error : ", data);
+                                tips.text("Error in updating TAT. Please try again.").css("color", "#F00");
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            console.log("Error : ", data);
+                            tips.text("Error in updating TAT. Please try again.").css("color", "#F00");
+                        }
+                    });
+                }
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            allFields.val("").removeClass("ui-state-error");
+        }
+    });
+
+    var cache = {};
+
+    function DropDown(el) {
+        this.dd = el;
+        this.opts = this.dd.find('ul.dropdown > li');
+        this.val = [];
+        this.index = [];
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents: function () {
+            var obj = this;
+
+            obj.dd.on('click', function (event) {
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+
+            obj.opts.children('label').on('click', function (event) {
+                var opt = $(this).parent(),
+                    chbox = opt.children('input'),
+                    val = chbox.val(),
+                    idx = opt.index();
+
+                ($.inArray(val, obj.val) !== -1) ? obj.val.splice($.inArray(val, obj.val), 1) : obj.val.push(val);
+                ($.inArray(idx, obj.index) !== -1) ? obj.index.splice($.inArray(idx, obj.index), 1) : obj.index.push(idx);
+            });
+        },
+        getValue: function () {
+            return this.val;
+        },
+        getIndex: function () {
+            return this.index;
+        }
+    }
+    $(document).ready(function () {
+        var dd = new DropDown($('#rpt_type'));
+        $(document).click(function () {
+            // all dropdowns
+            $('.wrapper-dropdown-4').removeClass('active');
+        });
+    });
+
+</script>

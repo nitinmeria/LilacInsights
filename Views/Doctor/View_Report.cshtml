@@ -1,0 +1,230 @@
+﻿@{
+    ViewBag.Title = "View_Report";
+    Layout = "~/Views/Shared/_DoctorLayout.cshtml";
+    int i = 0;
+}
+
+
+@section styles{
+    @Styles.Render("~/Content/tables1.css")
+
+}
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    
+    <body>
+        <div id="wrapper">
+            <div id="content">
+                <div id="rightnow">
+                    <h3 class="reallynow">
+                        <span>
+                            Welcome
+                            LENEST
+                        </span>
+                        <a href="#">Date :@DateTime.Now.ToString("MM-dd-yy") :<div id="timeval" style="display:inline-block;">@DateTime.Now.ToShortTimeString()</div></a>          <br>
+                    </h3>
+                    <p class="youhave" style="vertical-align:middle">
+                        <marquee direction="left" scrolldelay="3" scrollamount="2" id="alert_marquee" style="vertical-align:middle">Lilac Insights... because every Pregnancy is Precious.  ::  All prenatal screening done under guidelines from Fetal Medicine Foundation (FMF) UK   ::   Only center in Western India using fully automatic Delfia Xpress as per FMF guidelines   ::</marquee>
+                    </p>
+                </div>
+                <div id="infowrap">
+                    <div id="infobox">
+                        <h3>My Reports</h3>
+                        <table cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td style="width:15%;vertical-align:top" id="folders">
+                                        <ul>
+                                            <li>
+                                                <h6 id="unread_reports_count" style="padding-right:0px">
+                                                    <b><a href="#">INBOX @{string.Format("{0:d}", (@ViewBag.count - i))}</a></b>
+                                                </h6>
+                                                <ul>
+                                                    <li id="folder_447" class="hospital">
+                                                        <a href="#">IRLA (58)</a>
+                                                    </li>
+                                                    <li id="folder_463" class="hospital">
+                                                        <a href="#">BOISAR (94)</a>
+                                                    </li>
+                                                    <li id="folder_464" class="hospital">
+                                                        <a class="active_folder" href="#">BSES (39)</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <h6 class="hospital">
+                                                    <b>TOTAL(@ViewBag.count)</b>
+                                                </h6>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <form id="form" name="form" method="post">
+                                            <fieldset>
+                                                <legend>Search Patient Record : </legend>
+                                                <table width="97%" border="0" style="border-collapse:collapse" cellpadding="0" cellspacing="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th width="70" style="border:none"><h3 style="background:none;border-bottom:none">By Name:</h3></th>
+                                                            <th width="100px" align="left" style="border:none; margin-top:5px;">
+                                                                @Html.TextBox("doctorsearchby", "", new
+                                          {
+                                              @class = "stylish_textarea",
+                                              style = "width:80px;height:auto",
+                                              autocomplete = "off",
+                                              tabindex = 1,
+                                              onchange = "$('form').submit()"
+                                          })
+                                                                <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                                            </th>
+                                                            <th width="70" style="border:none;padding:0px;"><h3 style="background:none;border-bottom:none">By Date :</h3></th>
+                                                            <th width="5" align="left" style="border:none; "><h4>From</h4></th>
+                                                            <th width="60" align="left" style="border:none;">
+                                                                @Html.TextBox("fromdate", null, new
+                                          {
+                                              placeholder = "mm/dd/yyyy",
+                                              @class = "stylish_textarea",
+                                              style = "width:70px;height:auto",
+                                              autocomplete = "off",
+                                              tabindex = 1,
+                                              //onchange = "$('form').submit()"
+                                          })
+                                                            </th>
+                                                            <th width="20" align="left" style="border:none; padding:0px;  "><h4>To</h4></th>
+                                                            <th width="60" align="left" style="border:none">
+                                                                @Html.TextBox("fromdate", null, new
+                                          {
+                                              placeholder = "mm/dd/yyyy",
+                                              @class = "stylish_textarea",
+                                              style = "width:70px;height:auto",
+                                              autocomplete = "off",
+                                              tabindex = 1,
+                                              //onchange = "$('form').submit()"
+                                          })
+                                                            </th>
+                                                            <th>
+                                                                <div id="rpt_type" class="wrapper-dropdown-4">
+                                                                    By Report Type
+                                                                    <ul class="dropdown">
+                                                                        <li ><input type="checkbox" name="el-1" id="el-1" value="FT"><label for="el-1">FT</label></li>
+                                                                        <li><input type="checkbox" name="el-2" id="el-2" value="SQ"><label for="el-2">SQ</label></li>
+                                                                        <li><input type="checkbox" name="el-3" id="el-3" value="PB"><label for="el-3">PB</label></li>
+                                                                        <li><input type="checkbox" name="el-4" id="el-4" value="SB"><label for="el-4">SB</label></li>
+                                                                        <li><input type="checkbox" name="el-5" id="el-5" value="STAF"><label for="el-5">STAF</label></li>
+                                                                        <li><input type="checkbox" name="el-6" id="el-6" value="STO"><label for="el-6">STO</label></li>
+                                                                        <li><input type="checkbox" name="el-7" id="el-7" value="STQ"><label for="el-7">STQ</label></li>
+                                                                        <li><input type="checkbox" name="el-8" id="el-8" value="ST"><label for="el-8">ST</label></li>
+                                                                        <li><input type="checkbox" name="el-9" id="el-9" value="AF"><label for="el-9">AF</label></li>
+                                                                        <li><input type="checkbox" name="el-10" id="el-10" value="CV"><label for="el-10">CV</label></li>
+                                                                        <li><input type="checkbox" name="el-11" id="el-11" value="NBS"><label for="el-11">NBS</label></li>
+                                                                    </ul>
+                                                                </div>
+                                                            
+                                                            </th>
+                                                            <th width="25" style="border:none" align="left" valign="middle">
+                                                                <input type="button" name="search" id="search" class="search_patient" value="GO" style="width:50px;margin-left:5px;">
+                                                            </th>
+                                                            <th width="10" align="right" valign="middle" style="border:none">
+                                                            </th>
+                                                            <th width="10" align="left" valign="middle" style="border:none">
+                                                            </th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <table class="inbox" summary="Inbox">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col" style="width:15%">
+                                                                <b>Date</b>
+                                                            </th>
+                                                            <th scope="col" style="width:45%"><b>Name</b></th>
+                                                            <th scope="col" style="width:20%"><b>Status</b></th>
+                                                            <th scope="col" style="width:20%"><b>View / Download</b></th>
+                                                        </tr>
+                                                    </thead>
+                                                    @*@foreach (var items in Model)
+                                                    {
+                                                        <tbody>
+                                                            <tr>
+                                                                @if (@items.uploadedbit == true)
+                                                                {
+
+                                                                    <td>@items.rptintime.ToShortDateString()</td>
+                                                                    <td>@items.patientname</td>
+                                                                    <td>Report Ready</td>
+                                                                    <td onclick="pdfopen"><a href="~/pdf/@{ @items.patientid}.pdf" target="_blank" id="row_2" onclick="pdfopen">@items.rptname</a></td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td>@items.rptintime.ToShortDateString()</td>
+                                                                    <td>@items.patientname</td>
+                                                                    <td>Sample Recieved</td>
+                                                                    <td>Report Awaited</td>
+                                                                }
+
+                                                            </tr>
+                                                        </tbody>
+                                                    }*@
+                                                    <tfoot>
+                                                        <tr align="right">
+                                                            <td colspan="4">
+                                                                Pages :
+                                                            </td>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </fieldset>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+    function DropDown(el) {
+        this.dd = el;
+        this.opts = this.dd.find('ul.dropdown > li');
+        this.val = [];
+        this.index = [];
+        this.initEvents();
+    }
+    DropDown.prototype = {
+        initEvents: function () {
+            var obj = this;
+
+            obj.dd.on('click', function (event) {
+                $(this).toggleClass('active');
+                event.stopPropagation();
+            });
+
+            obj.opts.children('label').on('click', function (event) {
+                var opt = $(this).parent(),
+                    chbox = opt.children('input'),
+                    val = chbox.val(),
+                    idx = opt.index();
+
+                ($.inArray(val, obj.val) !== -1) ? obj.val.splice($.inArray(val, obj.val), 1) : obj.val.push(val);
+                ($.inArray(idx, obj.index) !== -1) ? obj.index.splice($.inArray(idx, obj.index), 1) : obj.index.push(idx);
+            });
+        },
+        getValue: function () {
+            return this.val;
+        },
+        getIndex: function () {
+            return this.index;
+        }
+    }
+    $(document).ready(function() {
+        var dd = new DropDown($('#rpt_type'));
+        $(document).click(function () {
+            // all dropdowns
+            $('.wrapper-dropdown-4').removeClass('active');
+        });
+    });
+</script>
+

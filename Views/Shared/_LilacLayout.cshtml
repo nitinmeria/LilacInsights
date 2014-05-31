@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+    
+}
+
+
+<head>
+    @*<meta name="viewport" content="width=device-width" />*@
+    <meta content="MSHTML 6.00.6000.16386" name=GENERATOR>
+    @Styles.Render("~/Content/stylelogin.css")
+    @Styles.Render("~/Content/linkStyle.css")
+    @Styles.Render("~/Content/inputStyle.css")
+     
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+
+    <table cellspacing="0" cellpadding="0" width="60%" align="center" border="0">
+
+        <tbody>
+
+            <tr>
+
+                <td>
+                    <!----------------------------------------------Working OK General Header -->
+
+                    <table cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+
+                        <tbody>
+
+                            <tr>
+
+                                <td align="right">
+                                    <font color="#ffffff"><strong></strong></font>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td align="left" width="100%">
+
+                                    <table cellspacing="0" cellpadding="0" width="100%"
+                                        border="0">
+
+                                        <tbody>
+
+                                            <tr>
+
+                                                <td width="272" height="60" bgcolor="#FFFFFF">
+                                                    <img src="~/Images/lilac/Header_web-admin-panel.jpg" border="0"/>
+                                                </td>
+
+                                                <td align="left"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td width="100%">
+
+                                    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+
+                                        <tbody>
+
+                                            <tr>
+
+                                                <td align="right"
+                                                    background="~/Images/lilac/gheader3.jpg"
+                                                    height="32">
+
+                                                    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+
+                                                        <tr>
+
+                                                            <td width="33%" align="left" style="PADDING-LEFT: 4pt">
+                                                                <font color="#ffffff">
+                                                                    <strong>
+                                                                    </strong>
+                                                                </font>
+
+                                                                <td width="33%" align="middle"></td>
+
+                                                            <td width="33%" align="right">
+                                                                <font color="#ffffff">
+                                                                    <strong>
+                                                                        <script>
+
+                                                                            print_date();
+
+                                                                        </script><span id=tick2>
+
+                                                                        </span>
+
+                                                                    </strong>
+                                                                </font>
+                                                            </td>
+
+                                                            <td width="1%"></td>
+
+                                                        </tr>
+
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    
+    <div class="container">
+        @RenderBody()
+    </div>
+       
+</body>
+

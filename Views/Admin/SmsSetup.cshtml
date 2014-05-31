@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Admin - SMS Setup";
+    Layout = "~/Views/Shared/_LilacLayoutwithTab.cshtml";
+}
+
+@section styles{
+    @Styles.Render("~/Content/tables.css")
+}
+
+  <div id="wrapper">
+            <div id="content">
+                <div id="rightnow">
+                    <h3 class="reallynow">
+                        <span>Welcome Admin</span> <div align="right" style="font-size:smaller">Date : May 19, 2014  , Time :<div id="timeval" style="display:inline-block;"></div></div>
+                    </h3>
+                    <p class="youhave" style="vertical-align:middle">
+                        <marquee direction="left" scrolldelay="3" scrollamount="2" id="alert_marquee" style="vertical-align:middle">Lilac Insights... because every Pregnancy is Precious.  ::  All prenatal screening done under guidelines from Fetal Medicine Foundation (FMF) UK   ::   Only center in Western India using fully automatic Delfia Xpress as per FMF guidelines   ::</marquee>
+                    </p>
+                </div>
+                <div id="infowrap">
+                    <div id="infobox">
+                        <h3>SMS Setup</h3>
+                        <form id="form" name="form" method="post">
+                            <fieldset>
+                                <legend>Search : </legend>
+                                <label for="name_entered">Client / Doctor Name : </label>
+                                <input id="name_entered" name="name_entered" type="text" />
+                                <input type="button" name="search" id="search" class="search" value="GO" onclick="searchstr();" style="width:50px; margin-left:5px;" />&nbsp;&nbsp;&nbsp;<input type="button" name="refresh" id="refresh" class="refresh" value="Back" style="width:50px; margin-left:5px;" onclick="getalldata();" />
+
+                                <div id="prev_next" style="float:right;margin-right:14px"></div>
+                                <select name="no_of_rows_per_page" id="no_of_rows_per_page" style="float:right;display:none" onchange="change_no_of_rows_per_page()">
+                                    <option>10 rows/page</option>
+                                    <option>20 rows/page</option>
+                                    <option>30 rows/page</option>
+                                </select>
+                                <br />
+                                <div id="disp_table" style="display:none;"></div>
+                                <div id="total_count" style="display:none;float:left;width:50%;font-weight:bold"></div>
+                                <div id="link" align="right" style="display:none;float:right;width:50%"></div>
+                                <div id="details" style="display:none;"></div>
+                            </fieldset>
+                            <fieldset id="c_info" style="display:none;">
+                                <legend>Client Info</legend>
+                                <label id="client_id_label">Client Id:</label>
+                                <input name="clientid" id="client_id" type="text" onkeypress="return restrictCharacters(this, event,0)" />
+                                <br />
+                                <label id="client_type_label">Ref Type :</label>
+                                <select id="client_type">
+                                    <option value=1>S</option>
+                                    <option value=2>H</option>
+                                    <option value=3 selected>C</option>
+                                    <option value=4>L</option>
+                                    <option value=4>D</option>
+                                </select>
+                                <br />
+                                <label id="client_name_label">Client Name:</label>
+                                <input name="clientname" id="client_name" type="text" onkeydown="limitText(this.form.clientname,50)" />
+                                <br />
+                                <div id="oth_form">
+                                    <label id="client_contact_label">Phone No:</label>
+                                    <input name="contactno" id="client_contact" type="text" onkeypress="return restrictCharacters(this, event,12)" />
+                                    <br />
+                                    <label id="client_mail_label">Email Id :</label>
+                                    <input name="emailid" id="client_mail" type="text" />
+                                    <br />
+                                    <div id="mailchk" style="display:none;">Invalid Email Id format</div>
+                                    <label id="sms_flag_label">SMS Flag :</label>
+                                    <input type="checkbox" id="sms_flag" name="smsflag">
+                                    <br />
+                                </div>
+                                <input id="submit" type="button" value="Submit" onclick="dochange(document.form.check)" />
+                            </fieldset>
+                        </form>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>

@@ -1,0 +1,268 @@
+﻿
+@model DataAccessLibrary.Model.Refmaster
+@{
+    ViewBag.Title = "Welcome to Lilac Insights.";
+    Layout = "~/Views/Shared/_LilacLayout.cshtml";
+    
+}
+
+    <table cellspacing="0" cellpadding="0" width="70%" align="center" border="0">
+
+        <tbody>
+
+            <tr>
+
+                <td>
+
+                    <table class="thinborder" cellspacing="0" cellpadding="0" width="100%"
+                        align="center" border="0">
+
+                        <tbody>
+
+                            <tr bgcolor="#FFFFFF">
+
+                                <td valign="top" align="right" width="25%" height="100%"></td>
+
+                                <td valign="top" width="50%">
+
+                                    <table cellspacing="0" cellpadding="0" width="100%" border="0">
+
+                                        <tbody>
+
+                                            <tr>
+
+                                                <td valign="top">
+
+                                                    <script language="JavaScript">
+
+                                                        function chkLogin() {
+
+                                                            doc = document.frmLogin;
+
+                                                            if (doc.username.value == "") {
+
+                                                                alert("Enter User Name");
+
+                                                                doc.username.focus();
+
+                                                                return false;
+
+                                                            }
+
+                                                            if (doc.password.value == "") {
+
+                                                                alert("Enter Password");
+
+                                                                doc.password.focus();
+
+                                                                return false;
+
+                                                            }
+
+
+
+                                                        }
+
+                                                    </script>
+
+
+
+                                                    <div class="highlight">
+
+                                                        <h2 class="itemhead">account Login</h2>
+
+                                                        <table cellspacing="0" cellpadding="0" width="90%" align="center"
+                                                            border="0">
+
+                                                            <tbody>
+
+                                                                <tr>
+
+                                                                    <td>
+
+                                                                        <table cellspacing="0" cellpadding="0" width="100%"
+                                                                            border="0">
+
+                                                                            <tbody>
+
+                                                                                <tr>
+
+                                                                                    <td height="40"></td>
+                                                                                </tr>
+
+                                                                                <tr>
+
+                                                                                    <td valign="top">
+
+                                                                                        <form name="frmLogin"
+                                                                                            action="/Admin/Index"
+                                                                                            method="post">
+
+                                                                                            <table height="109" cellspacing="0" cellpadding="0"
+                                                                                                width="179" align="center"
+                                                                                                background="~/Images/lilac/loginbox.gif"
+                                                                                                border="0">
+
+                                                                                                <tbody>
+
+                                                                                                    <tr>
+
+                                                                                                        <td valign="top">
+
+                                                                                                            <table cellspacing="0" cellpadding="0" width="179"
+                                                                                                                border="0">
+
+                                                                                                                <tbody>
+
+                                                                                                                    <tr>
+
+                                                                                                                        <td width="32">&nbsp;</td>
+
+                                                                                                                        <td class="black" width="147">
+                                                                                                                            <strong>Log in to your
+
+                                                                                                                                Account
+                                                                                                                            </strong>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                </tbody>
+                                                                                                            </table>
+
+                                                                                                            <table height="81" cellspacing="0" cellpadding="0"
+                                                                                                                width="179" border="0">
+
+                                                                                                                <tbody>
+
+                                                                                                                    <tr>
+
+                                                                                                                        <td width="17">&nbsp;</td>
+
+                                                                                                                        <td width="162">
+
+                                                                                                                            <table cellspacing="0" cellpadding="3" width="100%"
+                                                                                                                                align="center" border="0">
+
+                                                                                                                                <tbody>
+
+                                                                                                                                    <tr>
+
+                                                                                                                                        <td colspan="2" height="10"></td>
+                                                                                                                                    </tr>
+
+                                                                                                                                    <tr>
+
+                                                                                                                                        <td class="black" align="right" width="38%">User ID
+
+                                                                                                                                        </td>
+
+                                                                                                                                        <td width="62%">
+                                                                                                                                            <input size="12" id="refid" name='refid'>
+                                                                                                                                        </td>
+                                                                                                                                    </tr>
+
+                                                                                                                                    <tr>
+
+                                                                                                                                        <td class="black" align="right">Password</td>
+
+                                                                                                                                        <td>
+                                                                                                                                            <input id="password" type="password" size="12"
+                                                                                                                                                name='password'>
+                                                                                                                                        </td>
+                                                                                                                                    </tr>
+
+                                                                                                                                    <tr>
+
+                                                                                                                                        <td colspan="2">
+
+                                                                                                                                            <div align="center">
+                                                                                                                                                <input class="lfmButton" type="submit" value="Login" name="Submit">
+                                                                                                                                                &nbsp;
+                                                                                                                                                <input class="lfmButton" type="reset" value="Reset" name="reset">
+
+                                                                                                                                                <input type="hidden" name="invID">
+                                                                                                                                            </div>
+                                                                                                                                        </td>
+
+                                                                                                                                    </tr>
+                                                                                                                                </tbody>
+                                                                                                                            </table>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                </tbody>
+
+
+
+                                                                                                            </table>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </tbody>
+
+                                                                                            </table>
+
+                                                                                            <p align="center">@ViewData["error"]</p>
+
+                                                                                        </form>
+
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+
+                                <td valign="top" align="right" width="25%" height="100%">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    <table height="15" cellspacing="0" cellpadding="0" width="100%" align="center"
+                        border="0">
+
+                        <tbody>
+
+                            <tr>
+
+                                <td align="right">
+
+                                    <table cellspacing="0" cellpadding="0" width="100%"
+                                        background="Images/lilac/gfooter.jpg"
+                                        border="0">
+
+                                        <tbody>
+
+                                            <tr>
+
+                                                <td class="lightgrey" valign="center" align="left" width="100%"
+                                                    height="30">
+                                                    <div id="footer">
+                                                        <div id="credits" style="margin-top: 5px; padding-left: 7px; color: #000">Powered By : KLAY.&nbsp;<a href="http://www.klay.in">www.klay.in</a><img src="~/Images/lilac/copyright-logo.png" style="margin-left: 5px;"/>
+                                                        </div>
+                                                        <br />
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>

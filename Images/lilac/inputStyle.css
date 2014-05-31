@@ -1,0 +1,40 @@
+INPUT.lfmButton {
+	BORDER-RIGHT: #c1c1c1 2px outset;
+	BORDER-TOP: #ddddff 2px outset;
+	FONT: bold 10px verdana;
+	BORDER-LEFT: 2px outset;
+	CURSOR: hand;
+	COLOR: #fff;
+	BORDER-BOTTOM: 2px outset;
+	BACKGROUND-COLOR: #AF80B7
+}
+INPUT.lfmButtonBig {
+	FONT-WEIGHT: 600; FONT-SIZE: 11px; BORDER-LEFT-COLOR: #ddddff; BORDER-BOTTOM-COLOR: black; WIDTH: 100px; CURSOR: hand; COLOR: #ffffff; BORDER-TOP-COLOR: #ddddff; BACKGROUND-COLOR: #3969ad; BORDER-RIGHT-COLOR: black
+}
+INPUT.lfmButtonBiggest {
+	FONT-WEIGHT: 600; FONT-SIZE: 11px; BORDER-LEFT-COLOR: #ddddff; BORDER-BOTTOM-COLOR: black; WIDTH: 160px; CURSOR: hand; COLOR: #ffffff; BORDER-TOP-COLOR: #ddddff; BACKGROUND-COLOR: #3969ad; BORDER-RIGHT-COLOR: black
+}
+INPUT.nrlButton {
+	BORDER-RIGHT: #c1c1c1 2px outset; BORDER-TOP: #fff 2px outset; FONT: bold 10px verdana; BORDER-LEFT: #fff 2px outset; CURSOR: hand; COLOR: #666; BORDER-BOTTOM: #c1c1c1 2px outset; BACKGROUND-COLOR: #e6e6e6
+}
+INPUT.stdButton {
+	BORDER-RIGHT: #010369 1px solid; BORDER-TOP: #010369 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 10px; BORDER-LEFT: #010369 1px solid; COLOR: #020571; BORDER-BOTTOM: #010369 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #8f91cd
+}
+INPUT.yellowButton {
+	BORDER-RIGHT: #6365ce 1px solid; BORDER-TOP: #6365ce 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 10px; BORDER-LEFT: #6365ce 1px solid; CURSOR: hand; COLOR: #010369; BORDER-BOTTOM: #6365ce 1px solid; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffcf00
+}
+INPUT.adminButton {
+	BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; FONT-WEIGHT: bold; FONT-SIZE: 10px; BORDER-LEFT: 1px outset; COLOR: #000000; BORDER-BOTTOM: 1px outset; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffffff
+}
+INPUT.stdCheckBox {
+	BORDER-RIGHT: #000099 0px solid; BORDER-TOP: #000099 0px solid; BORDER-LEFT: #000099 0px solid; BORDER-BOTTOM: #000099 0px solid
+}
+INPUT.stdRadion {
+	BORDER-RIGHT: #000099 0px solid; BORDER-TOP: #000099 0px solid; BORDER-LEFT: #000099 0px solid; BORDER-BOTTOM: #000099 0px solid
+}
+pageHeader {
+	FONT-WEIGHT: bold; FONT-SIZE: 8pt; FILTER: shadow(color=#AAAAAA, direction=135); COLOR: #ff0000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+TD.HeaderCream {
+	FONT-WEIGHT: normal; FONT-SIZE: 8pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; HEIGHT: 18px; BACKGROUND-COLOR: #f6f7f2; TEXT-ALIGN: left
+}

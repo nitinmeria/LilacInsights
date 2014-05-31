@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "_DoctorLayout";
+
+}
+
+
+@Styles.Render("~/Content/theme.css")
+@Styles.Render("~/Content/style.css")
+@RenderSection("styles", required: false)
+
+@helper ActiveItem(string actionName, string controllerName, string areaName)
+{
+    if (ViewContext.RouteData.Values["action"].ToString() == actionName &&
+            ViewContext.RouteData.Values["controller"].ToString() == controllerName &&
+            (ViewContext.RouteData.DataTokens["area"] == null || ViewContext.RouteData.DataTokens["area"].ToString() == areaName))
+    {
+        @:current
+    }
+}
+
+<body>
+    <div id="container">
+
+        <div id="header">
+            <div id="logo">
+                <img src="~/Images/lilac/Header.jpg" style="margin-top: -11px" id="img1" />
+            </div>
+            <div id="topmenu" style="margin-top: 30px">
+                <ul>
+                    <li class="@ActiveItem("View_Report", "Doctor", null)">@Html.ActionLink("My Reports", "View_Report", "Doctor")</li>
+                    <li>@Html.ActionLink("Logout", "smssetup", "Admin")</li>
+                </ul>
+            </div>
+        </div>
+        @RenderBody()
+        <br />
+        <div id="footer">
+            <div id="credits" style="margin-top: -10px">
+                Powered By : KLAY.&nbsp;<a href="http://www.klay.in">www.klay.in</a><img src="~/Images/lilac/copyright-logo.png" style="margin-left: 5px;">
+            </div>
+            <br />
+
+        </div>
+
+    </div>
+
+
+</body>
+

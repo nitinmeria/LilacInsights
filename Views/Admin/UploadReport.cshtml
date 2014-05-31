@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "UploadReport";
+    Layout = "~/Views/Shared/_LilacLayoutwithTab.cshtml";
+}
+<body>
+      <div id="wrapper">
+            <div id="content">
+                <div id="rightnow">
+                    <h3 class="reallynow">
+                        <span>Welcome Admin</span> <div align="right" style="font-size:smaller">Date : May 19, 2014  , Time :<div id="timeval" style="display:inline-block;"></div></div>
+                    </h3>
+                    <p class="youhave" style="height:28px;vertical-align:middle">
+                        <marquee direction="left" scrolldelay="3" scrollamount="2" id="alert_marquee" width="82%" style="height:28px;vertical-align:middle">
+                            Lilac Insights... because every Pregnancy is Precious.  ::  All prenatal screening done under guidelines from Fetal Medicine Foundation (FMF) UK   ::   Only center in Western India using fully automatic Delfia Xpress as per FMF guidelines   ::
+                        </marquee>
+                        <input type="button" name="edit_alert" id="edit_alert" class="stylish_button" value="Edit Message" onclick="javascript: window.location = 'report.php';" style="float:right;font-size:12px;height:28px" />
+                    </p>
+                </div>
+                <div id="infowrap">
+                    <div id="infobox">
+                        <h3>UPLOAD REPORTS</h3>
+                        <p>&nbsp;</p>
+                        <form id="extraction_form" method="post" enctype="multipart/form-data">
+                            <fieldset id="data_extract">
+                                <legend>STEP 1 : IMPORT PATIENT SAMPLES  </legend>
+                                <div align="right">
+                                    <b>Note :</b> Auto Extraction process is set at every 1 hour.
+                                    <br />
+                                    <br />
+                                </div>
+                                <div align="center">
+                                    Last Extraction Time :  <b> 15:00:30 - 19/05/2014</b><br><br>
+                                    <input type="submit" class="stylish_button" value="Extract Manually" name="exportdata" />
+                                </div>
+                            </fieldset>
+                        </form>
+                        <form id="upload_form" method="post" enctype="multipart/form-data">
+                            <fieldset id="upload">
+                                <legend>STEP 2 : UPLOAD PATIENT REPORTS </legend>
+                                <br />
+                                <div id="primary_window" align="center">
+                                    <b> SELECT FILES  :  </b> <input name='uploads[]' type="file" multiple="" />
+                                    <br /><br />
+                                    <input type="submit" value="Upload" name="upload" class="stylish_button" />
+                                    <div id="error_message" style="display:none"></div>
+                                </div>
+                                <div id="secondary_window" style="display:none">
+                                    <div id="uploading_note" style="float:left;vertical-align:middle">
+                                        <b>Note</b>:- Uploading is in progress. Please do not press your Browser's Back/Refresh(F5) Button.
+                                    </div>
+                                    <div id="back_button" style="float:right;display:none">
+                                        <input type="button" class="stylish_button" value="Back to Upload" onclick="switch_to_primary_window();" />
+                                    </div>
+                                    <br /><br /><br />
+                                    <table id="upload_stats">
+                                        <tr>
+                                            <th width="10%"> Sr. No. </th>
+                                            <th width="18%"> Report Name </th>
+                                            <th width="18%"> Uploading Status </th>
+                                            <th width="18%"> Email Status </th>
+                                            <th width="18%"> SMS Status </th>
+                                            <th width="18%"> Group SMS Status </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
